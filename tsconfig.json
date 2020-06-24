@@ -19,6 +19,9 @@
       "@monofunworkspace/ui": ["libs/ui/src/index.ts"],
       "@monofunworkspace/feature-profile-details": [
         "libs/feature-profile-details/src/index.ts"
+      ],
+      "@monofunworkspace/feature-profile-listing": [
+        "libs/feature-profile-listing/src/index.ts"
       ]
     }
   },

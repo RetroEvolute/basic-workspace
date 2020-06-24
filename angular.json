@@ -86,10 +86,7 @@
               "apps/monorepofun/tsconfig.app.json",
               "apps/monorepofun/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/monorepofun/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/monorepofun/**"]
           }
         },
         "test": {
@@ -123,13 +120,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/monorepofun-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/monorepofun-e2e/**"
-            ]
+            "tsConfig": ["apps/monorepofun-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/monorepofun-e2e/**"]
           }
         }
       }
@@ -147,10 +139,7 @@
               "libs/ui/tsconfig.lib.json",
               "libs/ui/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/ui/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/ui/**"]
           }
         },
         "test": {
@@ -199,6 +188,34 @@
       "schematics": {
         "@nrwl/angular:component": {
           "styleext": "scss"
+        }
+      }
+    },
+    "feature-profile-listing": {
+      "root": "libs/feature-profile-listing",
+      "sourceRoot": "libs/feature-profile-listing/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature-profile-listing/tsconfig.lib.json",
+              "libs/feature-profile-listing/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/feature-profile-listing/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/feature-profile-listing/jest.config.js",
+            "tsConfig": "libs/feature-profile-listing/tsconfig.spec.json"
+          }
         }
       }
     }

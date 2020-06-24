@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UiModule } from '../../../../libs/ui/src';
@@ -16,6 +17,7 @@ import { InfoComponent } from './info.component';
   declarations: [AppComponent, InfoComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     UiModule,
     MatToolbarModule,
     RouterModule.forRoot(
@@ -31,6 +33,14 @@ import { InfoComponent } from './info.component';
           loadChildren: () =>
             import('@monofunworkspace/feature-profile-details').then(
               module => module.FeatureProfileDetailsModule
+            )
+        },
+        {
+          path: 'profile-listing',
+          pathMatch: 'full',
+          loadChildren: () =>
+            import('@monofunworkspace/feature-profile-listing').then(
+              module => module.FeatureProfileListingModule
             )
         }
       ],

@@ -23,6 +23,9 @@
     },
     "feature-profile-details": {
       "tags": []
+    },
+    "feature-profile-listing": {
+      "tags": []
     }
   }
 }
