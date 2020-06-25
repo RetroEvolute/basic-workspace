@@ -8,22 +8,27 @@
     <ng-template #noUserImage>
       <img mat-card-avatar src="/assets/filler-img.jpg" />
     </ng-template>
-    <mat-card-title
-      >{{ user.firstName || 'John' }}
-      {{ user.lastName || 'Doe' }}</mat-card-title
-    >
+    <mat-card-title>
+      {{ user.firstName || 'John' }} {{ user.lastName || 'Doe' }}
+    </mat-card-title>
     <mat-card-subtitle>New Scorpion Hire</mat-card-subtitle>
   </mat-card-header>
-  <br />
-  <hr />
-  <br />
   <mat-card-content>
     <span class="mat-body-strong">EMAIL:</span>
-    <p>{{ user.email || 'jdoe@example.com' }}</p>
+    <p>
+      <a *ngIf="user.email" [href]="'mailto:' + user.email">{{ user.email }}</a>
+      <span *ngIf="!user.email">{{ 'jdoe@example.com' }}</span>
+    </p>
     <span class="mat-body-strong">PHONE:</span>
-    <p>{{ user.phone || '(xxx) xxx = xxxx' }}</p>
+    <p>
+      <a *ngIf="user.phone" [href]="'tel:' + user.phone">{{ user.phone }}</a>
+      <span *ngIf="!user.phone">{{ '(xxx) xxx = xxxx' }}</span>
+    </p>
     <span class="mat-body-strong">CELL PHONE:</span>
-    <p>{{ user.cell || '(xxx) xxx = xxxx' }}</p>
+    <p>
+      <a *ngIf="user.cell" [href]="'tel:' + user.cell">{{ user.cell }}</a>
+      <span *ngIf="!user.cell">{{ '(xxx) xxx = xxxx' }}</span>
+    </p>
     <span class="mat-body-strong">CITY/STATE:</span>
     <p>{{ user.city || 'Santa Clarita' }}, {{ user.state || 'CA' }}</p>
   </mat-card-content>

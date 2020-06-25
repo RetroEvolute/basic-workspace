@@ -3,7 +3,7 @@
   <ng-container matColumnDef="pictureThumb">
     <th mat-header-cell *matHeaderCellDef>Picture</th>
     <td mat-cell *matCellDef="let element">
-      <img class="circle" src="{{ element.pictureThumb }}" />
+      <img class="avatar" src="{{ element.pictureThumb }}" />
     </td>
   </ng-container>
 
@@ -24,7 +24,9 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr
     (click)="goToProfile(row.id)"
+    (keyup.enter)="goToProfile(row.id)"
     mat-row
     *matRowDef="let row; let i = index; columns: displayedColumns"
+    tabIndex="0"
   ></tr>
 </table>

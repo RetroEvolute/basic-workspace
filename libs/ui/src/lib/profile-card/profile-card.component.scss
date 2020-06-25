@@ -1,15 +1,27 @@
-mat-card-header {
-  img {
-    width: 5em;
-    height: 5em;
+mat-card {
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+img[mat-card-avatar] {
+  width: 4rem;
+  height: 4rem;
+}
+
+::ng-deep .mat-card-header-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  mat-card-title.mat-card-title {
+    margin-bottom: 0.5rem;
+  }
+
+  mat-card-subtitle.mat-card-subtitle {
+    margin-bottom: 0;
   }
 }
 
-mat-card-content {
-  span {
-    & + p {
-      margin-left: 1em;
-    }
-  }
-
+mat-card-header {
+  margin-bottom: 1.5rem;
 }
