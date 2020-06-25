@@ -1,30 +1,87 @@
 import { Injectable } from '@angular/core';
-import { Action } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { switchMap, map, withLatestFrom, concatMap } from 'rxjs/operators';
 
-import { ProfileService } from './profile.service';
 import * as ProfileActions from './profile.actions';
-import { UserProfile } from '../feature-profile-details/src/lib/models';
-import { ProfileState } from '../feature-profile-details/src/lib/models/profile-state.model';
+import * as fromProfile from './profile.reducers';
+import { ProfileService } from './profile.service';
+import { UserProfile } from '../feature-profile-details/src/lib/models/profile.model';
+import { ProfileState } from './../feature-profile-details/src/lib/models/profile-state.model';
 
 @Injectable()
 export class ProfileEffects {
-  constructor(private actions$: Actions, private dataService: ProfileService) {}
+  getUserProfileRequest$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProfileActions.getProfile),
+      concatMap(action =>
+        of(action).pipe(
+          withLatestFrom(
+            this.store.pipe(
+              select(fromProfile.profileKey),
+              map((res: ProfileState) => res)
+            )
+          )
+        )
+      ),
+      switchMap(([{ userId }, { userProfileList }]) => {
+        const userIndex =
+          userProfileList &&
+          userProfileList.findIndex(user => user.id === userId);
+        if (userIndex) {
+          return of(
+            ProfileActions.getProfileSuccess({
+              payload: userProfileList[userIndex]
+            })
+          );
+        } else {
+          return this.handleGetUserProfile(userId);
+        }
+      })
+    )
+  );
 
-  // getUserProfileRequest$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(ProfileActions.getProfile),
-  //     map(() =>
-  //       // ProfileActions.getProfileSuccess(this.dataService.getUserProfile(1))
-  //     )
-  //   )
-  // );
+  getProfilesRequest$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProfileActions.getProfiles),
+      switchMap(() => {
+        return this.profileService
+          .getUserProfiles()
+          .pipe(
+            map((users: UserProfile[]) =>
+              ProfileActions.getProfilesSuccess({ profileList: users })
+            )
+          );
+      })
+    )
+  );
 
-  // getUserProfilesRequest$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(ProfileActions.getProfiles)
-  //   )
-  // );
+  getRandomUserProfileRequest$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProfileActions.getRandomProfile),
+      switchMap(() => {
+        const random = Math.floor(
+          Math.random() * this.profileService.maxResults
+        );
+        return this.handleGetUserProfile(random);
+      })
+    )
+  );
+
+  private handleGetUserProfile(userId: number) {
+    return this.profileService
+      .getUserProfiles(userId)
+      .pipe(
+        map((users: UserProfile[]) =>
+          ProfileActions.getProfileSuccess({ payload: users[0] })
+        )
+      );
+  }
+
+  constructor(
+    private actions$: Actions,
+    private store: Store<any>,
+    private profileService: ProfileService
+  ) {}
 }

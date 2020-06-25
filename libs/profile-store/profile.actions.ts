@@ -17,3 +17,9 @@ export const getProfilesSuccess = createAction(
   '[Profile Listing Component] Successfully received user list request',
   props<{ profileList: UserProfile[] }>()
 );
+export const getRandomProfile = createAction(
+  '[Profile Details Component] Get random user profile request'
+);
+export const resetProfile = createAction(
+  '[Profile Details Component] Reset profile'
+);

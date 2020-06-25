@@ -4,6 +4,8 @@ import * as ProfileActions from './profile.actions';
 import { UserProfile } from '../feature-profile-details/src/lib/models/profile.model';
 import { ProfileState } from './../feature-profile-details/src/lib/models/profile-state.model';
 
+export const profileKey = 'profile';
+
 export const initialState: ProfileState = {
   userProfile: null,
   userProfileList: null
@@ -11,9 +13,14 @@ export const initialState: ProfileState = {
 
 const profileReducer = createReducer(
   initialState,
-  on(ProfileActions.getProfile, state => {
-    // Write code here
-    return { ...state };
+  on(ProfileActions.getProfileSuccess, (state, { payload }) => {
+    return { ...state, userProfile: payload };
+  }),
+  on(ProfileActions.getProfilesSuccess, (state, { profileList }) => {
+    return { ...state, userProfileList: profileList };
+  }),
+  on(ProfileActions.resetProfile, state => {
+    return { ...state, userProfile: initialState.userProfile };
   })
 );
 
