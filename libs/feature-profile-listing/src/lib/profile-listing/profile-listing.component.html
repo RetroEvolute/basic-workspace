@@ -3,5 +3,6 @@
 <!-- Code Here -->
 <!-- Use the 'profile grid' UI component HERE to display the user profile details  -->
 <monofunworkspace-profile-grid
-  [users]="profiles$"
+  [users]="userProfileList"
+  (profileSelected)="handleProfileSelection($event)"
 ></monofunworkspace-profile-grid>

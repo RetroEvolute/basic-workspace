@@ -31,7 +31,6 @@ import { ProfileStoreModule } from '../../../../libs/profile-store/profile-store
         },
         {
           path: 'profile-details',
-          pathMatch: 'full',
           loadChildren: () =>
             import('@monofunworkspace/feature-profile-details').then(
               module => module.FeatureProfileDetailsModule
