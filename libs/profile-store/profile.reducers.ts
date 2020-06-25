@@ -16,11 +16,20 @@ const profileReducer = createReducer(
   on(ProfileActions.getProfileSuccess, (state, { payload }) => {
     return { ...state, userProfile: payload };
   }),
+  on(ProfileActions.getProfileError, state => {
+    return { ...state, userProfile: initialState.userProfile };
+  }),
   on(ProfileActions.getProfilesSuccess, (state, { profileList }) => {
     return { ...state, userProfileList: profileList };
   }),
+  on(ProfileActions.getProfilesError, state => {
+    return { ...state, userProfileList: initialState.userProfileList };
+  }),
   on(ProfileActions.resetProfile, state => {
     return { ...state, userProfile: initialState.userProfile };
+  }),
+  on(ProfileActions.resetProfiles, state => {
+    return { ...state, userProfileList: initialState.userProfileList };
   })
 );
 

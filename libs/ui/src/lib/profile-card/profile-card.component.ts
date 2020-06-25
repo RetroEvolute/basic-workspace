@@ -9,6 +9,5 @@ import { UserProfile } from '../../../../feature-profile-details/src/lib/models'
 export class ProfileCardComponent {
   @Input() user: UserProfile;
 
-  constructor() { }
-
+  constructor() {}
 }

@@ -1,10 +1,15 @@
 import { ProfileState } from './../feature-profile-details/src/lib/models/profile-state.model';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-export const getUserProfileState = createFeatureSelector<ProfileState>('profile');
+import { profileKey } from './profile.reducers';
 
-export const getUserProfile = createSelector(getUserProfileState, ({ userProfile }) => {
+export const getUserProfileState = createFeatureSelector<ProfileState>(
+  profileKey
+);
 
-  return userProfile;
-
-});
+export const getUserProfile = createSelector(
+  getUserProfileState,
+  ({ userProfile }) => {
+    return userProfile;
+  }
+);

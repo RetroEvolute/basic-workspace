@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { InfoComponent } from './info.component';
 import { ProfileEffects } from '../../../../libs/profile-store/profile.effects';
-import { reducer } from '../../../../libs/profile-store/profile.reducers';
+import { ProfileStoreModule } from '../../../../libs/profile-store/profile-store.module';
 
 @NgModule({
   declarations: [AppComponent, InfoComponent],
@@ -49,9 +49,7 @@ import { reducer } from '../../../../libs/profile-store/profile.reducers';
       { initialNavigation: 'enabled' }
     ),
     StoreModule.forRoot(
-      {
-        UserProfile: reducer
-      },
+      {},
       {
         metaReducers: !environment.production ? [] : [],
         runtimeChecks: {
@@ -60,6 +58,7 @@ import { reducer } from '../../../../libs/profile-store/profile.reducers';
         }
       }
     ),
+    ProfileStoreModule,
     EffectsModule.forRoot([ProfileEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     BrowserAnimationsModule
