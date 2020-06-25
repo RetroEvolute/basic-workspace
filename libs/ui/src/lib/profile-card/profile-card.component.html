@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card [@fadeIn]="'in'">
   <mat-card-header>
     <img
       *ngIf="user?.pictureLarge; else noUserImage"

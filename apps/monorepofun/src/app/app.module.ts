@@ -1,16 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
-import { AppComponent } from './app.component';
-import { UiModule } from '../../../../libs/ui/src';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RouterModule } from '@angular/router';
-import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
+
+import { AppComponent } from './app.component';
+import { UiModule } from '../../../../libs/ui/src';
+import { environment } from '../environments/environment';
 import { InfoComponent } from './info.component';
 import { ProfileEffects } from '../../../../libs/profile-store/profile.effects';
 import { ProfileStoreModule } from '../../../../libs/profile-store/profile-store.module';

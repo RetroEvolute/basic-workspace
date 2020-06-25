@@ -1,7 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
 import * as ProfileActions from './profile.actions';
-import { UserProfile } from '../feature-profile-details/src/lib/models/profile.model';
 import { ProfileState } from './../feature-profile-details/src/lib/models/profile-state.model';
 
 export const profileKey = 'profile';
