@@ -13,20 +13,18 @@ import { ProfileState } from '../feature-profile-details/src/lib/models/profile-
 export class ProfileEffects {
   constructor(private actions$: Actions, private dataService: ProfileService) {}
 
-  getUserProfileRequest$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ProfileActions.getProfile),
-      map(() => ProfileActions.getProfileSuccess()),
-      tap(ev => this.transformUserData(this.dataService.getUserProfile(1)))
-      // Write code to retrieve random user from API here
-      // Hint: You will need to use some rxjs operators here)
-    )
-  );
+  // getUserProfileRequest$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(ProfileActions.getProfile),
+  //     map(() =>
+  //       // ProfileActions.getProfileSuccess(this.dataService.getUserProfile(1))
+  //     )
+  //   )
+  // );
 
-  transformUserData(data: object) {
-    console.log(data);
-    return data;
-  }
+  // getUserProfilesRequest$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(ProfileActions.getProfiles)
+  //   )
+  // );
 }
-
-// FYI: The response from the API will return an object with different properties than the UserProfile model.

@@ -12,6 +12,6 @@ export class ProfileDetailsComponent {
   profile$ = this.store.pipe(select(state => state.ProfileState));
 
   constructor(private store: Store<any>) {
-    this.store.dispatch(ProfileActions.getProfile());
+    // this.store.dispatch(ProfileActions.getProfile());
   }
 }

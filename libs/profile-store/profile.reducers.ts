@@ -5,7 +5,8 @@ import { UserProfile } from '../feature-profile-details/src/lib/models/profile.m
 import { ProfileState } from './../feature-profile-details/src/lib/models/profile-state.model';
 
 export const initialState: ProfileState = {
-  userProfile: null
+  userProfile: null,
+  userProfileList: null
 };
 
 const profileReducer = createReducer(
