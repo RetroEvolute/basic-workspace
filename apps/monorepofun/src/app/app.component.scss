@@ -1,33 +1,52 @@
-.flex {
-  display: flex;
+@import '../variables';
+
+.header {
   align-items: center;
-  justify-content: center;
-
-  h1 {
-    margin: 0;
-  }
-}
-
-header {
-  background-color: #007FFD;
+  background-color: $blue;
   color: white;
-  padding: 5px;
-  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0;
 }
 
-mat-toolbar {
-  background-color: #66aeff;
-  color: #fff;
-  
-  span {
-    cursor: pointer;
+.header-logo {
+  margin-left: -37.5px; // Accounting for image weight offset
+  width: 75px;
+}
+
+.header-title {
+  margin: 0;
+}
+
+.nav {
+  background-color: $lightBlue;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-link {
+  color: $white;
+  font-size: 1.25rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: background 300ms;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover,
+  &:focus {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &:active {
+    background: rgba(0, 0, 0, 0.05);
   }
 }
 
-.fill-remaining-space {
-  margin-right: 2em;
-}
-
-.app-container {
-  margin: 5em 25%;
+.app {
+  margin: 1rem auto;
+  max-width: 1024px;
+  padding: 1rem;
 }

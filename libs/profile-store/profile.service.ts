@@ -44,7 +44,8 @@ export class ProfileService {
       email: user.email,
       phone: user.phone,
       cell: user.cell,
-      pictureUrl: user.picture.thumbnail
+      pictureLarge: user.picture.large,
+      pictureThumb: user.picture.thumbnail
     };
   }
 }

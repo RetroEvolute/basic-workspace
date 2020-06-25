@@ -1,25 +1,18 @@
-<header class="flex">
+<header class="header">
   <img
     alt="Scorpion logo"
-    width="75"
+    class="header-logo"
     src="https://media-exp1.licdn.com/dms/image/C4E0BAQFcJGxK7iIF9g/company-logo_200_200/0?e=2159024400&v=beta&t=OJiW_JucTeBQ1DE5gV4thX6uq_7Um9YKmG6KA972Bx8"
   />
-  <h1>{{ title }}</h1>
+  <h1 class="header-title">{{ title }}</h1>
 </header>
 
-<mat-toolbar>
-  <span routerLink="/">Info</span>
+<nav class="nav">
+  <a class="nav-link" routerLink="/">Info</a>
+  <a class="nav-link" routerLink="/profile-details">Profile Details</a>
+  <a class="nav-link" routerLink="/profile-listing">Profile List</a>
+</nav>
 
-  <span class="fill-remaining-space"></span>
-
-  <span routerLink="/profile-details">Profile Details</span>
-
-  <span class="fill-remaining-space"></span>
-
-  <!-- Profile List component feature needs to be created with Nx -->
-  <span routerLink="/profile-listing">Profile List</span>
-</mat-toolbar>
-
-<div class="app-container">
+<div class="app">
   <router-outlet></router-outlet>
 </div>

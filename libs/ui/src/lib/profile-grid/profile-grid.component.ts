@@ -17,7 +17,7 @@ export class ProfileGridComponent {
   @Input() users: UserProfile[];
   @Output() profileSelected = new EventEmitter<number>();
 
-  displayedColumns: string[] = ['pictureUrl', 'name', 'email'];
+  displayedColumns: string[] = ['pictureThumb', 'name', 'email'];
 
   constructor() {}
 

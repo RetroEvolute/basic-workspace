@@ -1,9 +1,9 @@
 <mat-card>
   <mat-card-header>
     <img
-      *ngIf="user?.pictureUrl; else noUserImage"
+      *ngIf="user?.pictureLarge; else noUserImage"
       mat-card-avatar
-      src="{{ user.pictureUrl }}"
+      src="{{ user.pictureLarge }}"
     />
     <ng-template #noUserImage>
       <img mat-card-avatar src="/assets/filler-img.jpg" />

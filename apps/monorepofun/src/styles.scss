@@ -1,4 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'variables'; /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { background-color: #f2f2f5; margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  background-color: $grey;
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.mat-typography {
+  line-height: 1.5;
+}
+
+.section-header {
+  text-align: center;
+}

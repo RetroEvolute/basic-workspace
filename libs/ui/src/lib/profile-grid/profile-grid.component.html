@@ -1,9 +1,9 @@
 <table mat-table [dataSource]="users" class="mat-elevation-z8">
   <!-- Picture Url Column -->
-  <ng-container matColumnDef="pictureUrl">
+  <ng-container matColumnDef="pictureThumb">
     <th mat-header-cell *matHeaderCellDef>Picture</th>
     <td mat-cell *matCellDef="let element">
-      <img class="circle" src="{{ element.pictureUrl }}" />
+      <img class="circle" src="{{ element.pictureThumb }}" />
     </td>
   </ng-container>
 

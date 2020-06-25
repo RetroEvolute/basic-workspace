@@ -7,5 +7,6 @@ export interface UserProfile {
   email: string;
   phone: string;
   cell: string;
-  pictureUrl: string;
+  pictureLarge: string;
+  pictureThumb: string;
 }
