@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import * as ProfileActions from '../../../../profile-store/profile.actions';
 
 @Component({
@@ -8,8 +8,10 @@ import * as ProfileActions from '../../../../profile-store/profile.actions';
   styleUrls: ['./profile-details.component.scss']
 })
 export class ProfileDetailsComponent {
+  // implements OnInit?
+  profile$ = this.store.pipe(select(state => state.ProfileState));
 
   constructor(private store: Store<any>) {
-      this.store.dispatch(ProfileActions.getProfile());
+    this.store.dispatch(ProfileActions.getProfile());
   }
 }

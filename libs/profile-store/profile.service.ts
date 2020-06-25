@@ -2,13 +2,18 @@
 // Further documentation for implementation can be found here: https://randomuser.me/documentation#format
 
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
-export class FormsService {
+export class ProfileService {
+  constructor(private httpClient: HttpClient) {}
 
-    getUserProfile() {
-        // Write code here to retrieve a user profile from the random user API
-    }
+  getUserProfile(num: number) {
+    const url =
+      'https://randomuser.me/api?inc=picture,name,email,phone,cell,location,id&seed=scorpiontest&noinfo&results=' +
+      num;
+    return this.httpClient.get(url);
+  }
 }
